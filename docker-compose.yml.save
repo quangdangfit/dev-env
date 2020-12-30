@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  redis:
+    restart: always
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+
+  mysql:
+    restart: always
+    image: "mysql:latest"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+
+  rabbitmq:
+    restart: always
+    image: "rabbitmq:alpine"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: 1234
+
+#  mongodb:
+#    restart: always
+#    image: "mongo:bionic"
+#    ports:
+#      - "27017:27017"
+#    environment:
+#      MONGO_INITDB_DATABASE: tokoin
+#      MONGO_INITDB_USERNAME: tokoin
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: 1234
+#    volumes:
+#      - "./storage/mongodb_data:/data/db"
+#      - "./resources/mongo-initdb.d:/docker-entrypoint-initdb.d"
+
